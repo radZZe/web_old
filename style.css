@@ -1,0 +1,165 @@
+html{height:100%;width:100%}
+body{
+    width:100%;
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width: 100%;
+    height: 100%;
+}
+.header{
+    position: relative;
+    padding-top: 20px;
+    width:100%;
+    height: 20vh;
+    background-image: url("https://i.pinimg.com/originals/24/69/21/24692167b3233d799d407c17bc2f226e.jpg");
+}
+.header h3{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    text-align: center;
+    display: block; 
+    
+}
+.menu{
+    margin: 0 auto;
+    width: 30%;
+    display: block;
+    white-space: nowrap;
+}
+.menu a{
+    text-align: center;
+    display: inline-block;
+    width: 32.7%;
+    text-decoration: none;
+    color:black;
+    font-size: 1.2em;
+}
+.menu a:hover{
+    color:red
+}
+.side-content{
+    float: left;
+    width: 50%;
+    height: 100%;
+    white-space: nowrap;
+    padding: 0;
+}
+.side-content .img{
+    display: inline-block;
+    width: 50%;
+    background-size: cover;
+    min-height: 100%;
+    white-space: wrap;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Sylvilagus_audubonii.jpg/398px-Sylvilagus_audubonii.jpg");
+}
+.side-content p{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    white-space: wrap;
+
+}
+.container{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container-main{
+    width: 49%;
+    height: 100%;
+    float: right;
+}
+
+.left {
+    float: left;
+    width: 30%;
+  }
+.right {
+    float: right;
+}
+.main-conten-item{
+    height: 30%;
+}
+.main-conten-item img{
+    vertical-align: middle;
+    height: 60%;
+}
+.footer{
+    padding-top:10px ;
+    padding-bottom: 10px;
+}
+.tiger{
+    width: 100%;
+    height: 50%;
+}
+.crocodile{
+    width: 100%;
+    height: 50%;
+}
+.leo{
+    width: 100%;
+    height: 50%;
+}
+.leo div{
+    float: right;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 3.8em;
+}
+.tiger div{
+    float: right;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 3.8em;
+}
+.crocodile div{
+    float: right;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 3.8em;
+}
+.tiger .img{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    white-space: wrap;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Panthera_tigris_tigris.jpg/398px-Panthera_tigris_tigris.jpg");
+}
+.crocodile .img{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    white-space: wrap;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Alligator_mississippiensis.jpg/413px-Alligator_mississippiensis.jpg");
+}
+.leo .img{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    white-space: wrap;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Amur_Leopard_%28P.p._amurensis%29.jpg/413px-Amur_Leopard_%28P.p._amurensis%29.jpg");
+}
+
+.search{
+    width: 100%;
+    text-align: right;
+}
+.search img{
+    width: 20px;
+    height: 20px;
+}
+.search input[type=text]{
+    display: inline;
+    width: 50%;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Monkeys</title>
+    <script src="script.js" defer></script>
+
+</head>
+<body background="https://static.vecteezy.com/system/resources/previews/014/462/161/original/abstract-smooth-blur-green-background-vector.jpg" width="100%" background-repeat="no-repeat">
+    <p>
+        <h1 align="center">Список обезьян</h1>
+    </p>
+    <p>
+        <menu size="10" align="center">
+            <button type="button" onclick="document.location='main-page.html'" >Главная</button>
+            <button type="button" onclick="document.location='monkeys-table.html'">Каталог обезьян</button>
+            <button type="button">Информация о веб-ресурсе</button>
+        </menu>
+    </p>
+    <main>
+        <details id="filter-forms" class="sort-foms">
+            <summary>Фильтры</summary>
+            <p>
+                <form type="text">
+                    <label for="name">Название:</label>
+                    <input type="text" id="name">
+                </form>
+                <form type="range">
+                    <label for="length-from">Длина от:</label>
+                    <input type="number" id="length-from" min="16" max="170">
+                    <label for="length-to">до:</label>
+                    <input type="number" id="length-to" min="16" max="170">
+                </form>
+                <form type="text">
+                    <label for="weight-from">Вес от:</label>
+                    <input type="number" id="weight-from" min="160" max="170000">
+                    <label for="weight-to">до:</label>
+                    <input type="number" id="weight-to" min="160" max="170000">
+                </form>
+                <form type="text">
+                    <label for="subspecies">Подвид:</label>
+                    <input type="text" id="subspecies">
+                </form>
+                <button id="filterBtn" type="button">Найти</button>
+                <button id="clearFilterBtn" type="button">Очистить фильтры</button>
+            </p>
+        </details>
+        <details class="sort-foms">
+            <summary>Сортировка</summary>
+            <p>
+                <fieldset>
+                    <legend>Выберите параметр сортировки</legend>
+                    <div>
+                        <summary>Первый уровень:</summary>
+                        <select name="first-level">
+                            <option value="length">По длине</option>
+                            <option value="weight">По весу</option>
+                            <option value="lifespan">По продолжительности жизни</option>
+                            <option value="none" selected>Нет</option>
+                        </select>
+                        <input type="checkbox" id="scales-1" name="scales-1" unchecked>
+                        <label for="scales-1">По убыванию</label>
+                    </div>
+                    <div>
+                        <summary>Второй уровень:</summary>
+                        <select name="second-level" disabled>
+                            <option value="length">По длине</option>
+                            <option value="weight" selected>По весу</option>
+                            <option value="lifespan">По продолжительности жизни</option>
+                            <option value="none" selected>Нет</option>
+                        </select>
+                        <input type="checkbox" id="scales-2" name="scales-2" unchecked>
+                        <label for="scales-2">По убыванию</label>
+                    </div>
+                    <div>
+                        <summary>Третий уровень:</summary>
+                        <select name="third-level" disabled>
+                            <option value="length">По длине</option>
+                            <option value="weight" selected>По весу</option>
+                            <option value="lifespan">По продолжительности жизни</option>
+                            <option value="none" selected>Нет</option>
+                        </select>
+                        <input type="checkbox" id="scales-3" name="scales-3" unchecked>
+                        <label for="scales-3">По убыванию</label>
+                    </div>
+                    <button type="button" id="sortBtn">Сортировать</button>
+                    <button type="button" id="clearSortBtn">Сбросить сортировку</button>
+                </fieldset>
+            </p>
+        </details>
+        <details class="sort-foms">
+            <summary>График</summary>
+            <p>
+                По оси ОХ:
+                <select name="OX">
+                    <option value="subspecies">Подвид</option>
+                    <option value="habitat" selected>Зона обитания</option>
+                </select>
+                По оси ОУ:
+                <select name="OY">
+                    <option value="heaviest">Самые тяжелые</option>
+                    <option value="tallest" selected>Самые высокие</option>
+                    <option value="longest-lived">Самые долгоживущие</option>
+                </select>
+                <button type="button" id="build">Построить</button>
+            </p>
+        </details>
+    </main>
+
+    <div id="monkeys-table">
+
+    </div>
+    
+</body>
+</html>

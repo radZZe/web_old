@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Статистика
+    </title>
+    <script src="statistics.js" defer></script>
+</head>
+
+<body>
+    <h3 align="center">Статистика</h3>
+    <div align="center">
+        <a href="./index.html">Главная</a> <a href="./leopard.html">Дальневосточный леопард</a> <a
+            href="./statistics.html">Статистика</a>
+    </div>
+    <details>
+        <summary>График</summary>
+        <table cellspacing=15>
+            <th><b>Значение по оси ОХ</b></th>
+            <th><b>Результат</b></th>
+            <tr>
+                <td>
+                    <form>
+                        <p><input name="radio" type="radio" value="amount">Вид животного</p>
+                        <p><input name="radio" type="radio" value="amount_live">Ареал обитания</p>
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <p><input name="checkbox" type="checkbox" value="max_amount">максимальная численность</p>
+                        <p><input name="checkbox" type="checkbox" value="max_amount_live">максимальная продолжительность
+                            жизни</p>
+                        <p><input name="checkbox" type="checkbox" value="min_amount">минимальная численность</p>
+                        <p><input name="checkbox" type="checkbox" value="min_amount_live">минимальная продолжительность
+                            жизни</p>
+                    </form>
+                </td>
+
+            </tr>
+
+        </table>
+        <p>Здесь будет график</p>
+    </details>
+    <details>
+        <summary>Фильтр</summary>
+        <p>Название:<input id="name" type="text"></p>
+        <p>Вид:<input id="type" type="text"></p>
+        <p>Ареал:<input id="habitat" type="text"></p>
+        <p>Численность: от <input id="populationFrom" type="text"> до <input id="populationTo" type="text"> </p>
+        <p>Продолжительность жизни: от <input id="lifespanFrom" type="text"> до <input id="lifespanTo" type="text"> </p>
+        <p>Охраняется?<select id="isGuarded">
+                <option value="false">Нет</option>
+                <option value="true">Да</option>
+            </select> </p>
+        <button id="filterBtn" type="button">Найти</button>
+        <button id="clearFilterBtn" type="button">Очистить фильтры</button>
+    </details>
+
+    <details class="sort-foms">
+        <summary>Сортировка</summary>
+        <p>
+            <fieldset>
+                <legend>Выберите параметр сортировки</legend>
+                <div>
+                    <summary>Первый уровень:</summary>
+                    <select class="sort_select" name="first-level">
+                        <option class="sort_option" value="population">По численности</option>
+                        <option class="sort_option" value="lifespan">По продолжительности жизни</option>
+                        <option class="sort_option" value="death">Смертность</option>
+                        <option value="none" selected>Нет</option>
+                    </select>
+                    <input type="checkbox" id="scales-1" name="scales-1" unchecked>
+                    <label for="scales-1">По убыванию</label>
+                </div>
+                <div>
+                    <summary>Второй уровень:</summary>
+                    <select name="second-level" disabled>
+                        <option class="sort_option" value="population">По численности</option>
+                        <option class="sort_option" value="lifespan">По продолжительности жизни</option>
+                        <option class="sort_option" value="death">Смертность</option>
+                        <option value="none" selected>Нет</option>
+                    </select>
+                    <input type="checkbox" id="scales-2" name="scales-2" unchecked>
+                    <label for="scales-2">По убыванию</label>
+                </div>
+                <div>
+                    <summary>Третий уровень:</summary>
+                    <select name="third-level" disabled>
+                        <option class="sort_option" value="population">По численности</option>
+                        <option class="sort_option" value="lifespan">По продолжительности жизни</option>
+                        <option class="sort_option" value="death">Смертность</option>
+                        <option value="none" selected>Нет</option>
+                    </select>
+                    <input type="checkbox" id="scales-3" name="scales-3" unchecked>
+                    <label for="scales-3">По убыванию</label>
+                </div>
+                <button type="button" id="sortBtn">Сортировать</button>
+                <button type="button" id="clearSortBtn">Сбросить сортировку</button>
+            </fieldset>
+        </p>
+    </details>
+    <table class="table" align="center" border=1 id="animals-table">
+    </table>
+</body>
+
+</html>
