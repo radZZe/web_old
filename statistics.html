@@ -5,6 +5,7 @@
     <title>
         Статистика
     </title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="statistics.js" defer></script>
 </head>
 
@@ -14,33 +15,41 @@
         <a href="./index.html">Главная</a> <a href="./leopard.html">Дальневосточный леопард</a> <a
             href="./statistics.html">Статистика</a>
     </div>
-    <details>
+
+    <details class="sort-foms">
         <summary>График</summary>
-        <table cellspacing=15>
-            <th><b>Значение по оси ОХ</b></th>
-            <th><b>Результат</b></th>
-            <tr>
-                <td>
-                    <form>
-                        <p><input name="radio" type="radio" value="amount">Вид животного</p>
-                        <p><input name="radio" type="radio" value="amount_live">Ареал обитания</p>
-                    </form>
-                </td>
-                <td>
-                    <form>
-                        <p><input name="checkbox" type="checkbox" value="max_amount">максимальная численность</p>
-                        <p><input name="checkbox" type="checkbox" value="max_amount_live">максимальная продолжительность
-                            жизни</p>
-                        <p><input name="checkbox" type="checkbox" value="min_amount">минимальная численность</p>
-                        <p><input name="checkbox" type="checkbox" value="min_amount_live">минимальная продолжительность
-                            жизни</p>
-                    </form>
-                </td>
+        <p>
+            По оси ОХ:
+            
+                <input type="radio" name="osx" value="type">Вид животного</input>
+                <input type="radio" name="osx" value="habitat">Ареал обитания</input>    
+            
+            
+            По оси ОУ:
 
-            </tr>
+            <div class="population">
+                <input type="checkbox" name="osy" value="max" data-value2="population">Максимальная численность</option>
+                <input type="checkbox" name="osy" value="min" data-value2="population">Минимальная численность</option>
+            </div>
+            <div class="death">
+                <input type="checkbox" name="osy" value="max" data-value2="death">Максимальная смертность</option>
+                <input type="checkbox" name="osy" value="min" data-value2="death">Минимальная смертность</option>
+            </div>
+            <div class="lifespan">
+                <input type="checkbox" name="osy" value="max" data-value2="lifespan">Максимальная продолжительность жизни</option>
+                <input type="checkbox" name="osy" value="min" data-value2="lifespan">Минимальная продолжительность жизни</option>
+            </div>
+            
+            
+            
+            
+            
 
-        </table>
-        <p>Здесь будет график</p>
+            <button type="button" id="build">Построить</button>
+        </p>
+        <div id="graph">
+            <svg height=10> </svg>
+        </div>
     </details>
     <details>
         <summary>Фильтр</summary>

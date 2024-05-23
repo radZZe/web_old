@@ -131,7 +131,7 @@ const animals = [
       population: 2000000,
       lifespan: 60,
       death: 1239,
-      death: 5473,
+      habitat: "Африка",
       protected: true,
     },
     {
@@ -457,8 +457,8 @@ let filterBtn = document.getElementById('filterBtn')
 let filterForms = document.getElementById('filter-forms')
 let clearFilter = document.getElementById('clearFilterBtn')
 let sortBtn = document.getElementById('sortBtn')
-let clearSort = document.getElementById('clearSortBtn')
 let buildBtn = document.getElementById('build')
+let clearSort = document.getElementById('clearSortBtn')
 let table = document.getElementById('animals-table')
 let firstLevel = document.querySelector('select[name="first-level"]');
 let secondLevel = document.querySelector('select[name="second-level"]');
@@ -750,4 +750,192 @@ document.addEventListener('DOMContentLoaded', function () {
           });
       }
   }
+
+
+var divs = document.querySelectorAll('.population, .death, .lifespan');
+var checkboxess = document.querySelectorAll('input[type="checkbox"]');
+
+
+for (var i = 0; i < divs.length; i++) {
+
+    divs[i].addEventListener('click', function() {
+
+        for (var j = 0; j < divs.length; j++) {
+
+            if (divs[j] !== this) {
+                var divCheckboxes = divs[j].querySelectorAll('input[type="checkbox"]');
+                for (var k = 0; k < divCheckboxes.length; k++) {
+                    divCheckboxes[k].disabled = true;
+                }
+            }
+        }
+
+        var isChecked = false;
+        for (var l = 0; l < checkboxess.length; l++) {
+            if (checkboxess[l].checked) {
+                isChecked = true;
+                break;
+            }
+        }
+
+        if (!isChecked) {
+            for (var m = 0; m < divs.length; m++) {
+                var divCheckboxes = divs[m].querySelectorAll('input[type="checkbox"]');
+                for (var n = 0; n < divCheckboxes.length; n++) {
+                    divCheckboxes[n].disabled = false;
+                }
+            }
+        }
+    });
+}
+
 });
+
+
+
+
+
+
+function createArrGraph(data, key,value) {
+
+  groupObj = d3.group(data, d => d[key]);
+  let arrGraph =[];
+ 4
+  for(let entry of groupObj) {
+  let minMax = d3.extent(entry[1].map(d => d[value]));
+  arrGraph.push({labelX : entry[0], values : minMax});
+  }
+  return arrGraph;
+ }
+
+const marginX = 100;
+const marginY = 30;
+const height = 400;
+const width = 800;
+
+let svg = d3.select("svg")
+ .attr("height", height)
+ .attr("width", width);
+ 
+buildBtn.addEventListener('click',function() {
+  const inputsOSX = d3.selectAll('input[name="osx"]');
+
+  const inputNodesOSX = inputsOSX.nodes();
+
+  const checkedInputNodes = inputNodesOSX.filter(function(input) {
+    const inputSelection = d3.select(input);
+    const checked = inputSelection.property('checked');
+    return checked === true;
+  });
+  const checkedValue = checkedInputNodes.length > 0
+    ? d3.select(checkedInputNodes[0]).property('value')
+    : null;
+
+  // Select the input element
+  const input = d3.selectAll('input[name="osy"]:checked');
+  const inputNodes = input.nodes()
+  console.log('inputNodes')
+  console.log(inputNodes)
+  console.log('input')
+  let value = '';
+  let isMin = false;
+  let isMax = false;
+  inputNodes.forEach(function(input) {
+    
+    const inputSelection = d3.select(input);
+    value = inputSelection.attr('data-value2')
+    if(inputSelection.property('value')==='max'){
+      isMax = true
+    }
+    if(inputSelection.property('value')==='min'){
+      isMin = true
+    }
+    console.log()
+  });
+
+  console.log(checkedValue)
+
+  console.log(createArrGraph(animals, checkedValue,value));
+  drawGraph(animals,checkedValue,value,isMin,isMax)
+ })
+
+
+ function createAxis(data, isFirst, isSecond){
+  // в зависимости от выбранных пользователем данных по OY
+  // находим интервал значений по оси OY
+  let firstRange = d3.extent(data.map(d => d.values[0]));
+  let secondRange = d3.extent(data.map(d => d.values[1]));
+  let min = firstRange[0];
+  let max = secondRange[1];
+  // функция интерполяции значений на оси
+  let scaleX = d3.scaleBand()
+  .domain(data.map(d => d.labelX))
+  .range([0, width - 2 * marginX]);
+ 
+  let scaleY = d3.scaleLinear()
+  .domain([min * 0.85, max * 1.1 ])
+  .range([height - 2 * marginY, 0]);
+ 
+  // создание осей
+  let axisX = d3.axisBottom(scaleX); // горизонтальная
+  let axisY = d3.axisLeft(scaleY); // вертикальная
+  // отрисовка осей в SVG-элементе
+  svg.append("g")
+  .attr("transform", `translate(${marginX}, ${height - marginY})`)
+  .call(axisX)
+  .selectAll("text") // подписи на оси - наклонные
+  .style("text-anchor", "end")
+  .attr("dx", "-.8em")
+  .attr("dy", ".15em")
+  .attr("transform", d => "rotate(-45)");
+ 
+  svg.append("g")
+  .attr("transform", `translate(${marginX}, ${marginY})`)
+  .call(axisY);
+ 
+  return [scaleX, scaleY]
+ }
+
+
+ function createChart(data, scaleX, scaleY, index, color) {
+  const r = 4
+  // чтобы точки не накладывались, сдвинем их по вертикали
+  let ident = (index == 0)? -r / 2 : r / 2;
+ 
+  svg.selectAll(".dot")
+  .data(data)
+  .enter()
+  .append("circle")
+  .attr("r", r)
+  .attr("cx", d => scaleX(d.labelX) + scaleX.bandwidth() / 2)
+  .attr("cy", d => scaleY(d.values[index]) + ident)
+  .attr("transform", `translate(${marginX}, ${marginY})`)
+  .style("fill", color)
+ }
+
+ function drawGraph(data,checkedValue,value,isMin,isMax) {
+  // значения по оси ОХ
+  const keyX = data.labelX;
+ 
+  const arrGraph = createArrGraph(animals, checkedValue,value);
+
+
+ 
+  svg.selectAll('*').remove();
+ 
+  // создаем шкалы преобразования и выводим оси
+  const [scX, scY] = createAxis(arrGraph, isMin, isMax);
+ 
+  // рисуем графики
+  if (isMin) {
+  createChart(arrGraph, scX, scY, 0, "blue")
+  }
+  if (isMax) {
+  createChart(arrGraph, scX, scY, 1, "red")
+  }
+ }
+
+
+
+
+

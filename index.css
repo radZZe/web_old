@@ -1,0 +1,97 @@
+html{height:100%;width:100%}
+body{    width:100%;
+    height: 100%;     margin: 0;
+    padding: 0;}
+.main{    width: 100%;
+    height: 100%;}
+.header{ position: relative;
+    padding-top: 20px;    width:100%;
+    height: 20vh;    background-image: url("https://i.pinimg.com/originals/24/69/21/24692167b3233d799d407c17bc2f226e.jpg");
+}.header h3{
+    position: absolute;    bottom: 0;
+    left: 50%;    text-align: center;
+    display: block;}
+.menu{    margin: 0 auto;
+    width: 50%;    display: block;
+    white-space: nowrap; text-align: center;
+}.menu a{
+    text-align: center;    display: inline-block;
+    width: 32.7%;    text-decoration: none;
+    color:black;    font-size: 1.2em;
+}.menu a:hover{
+    color:red}
+.side-content{
+    float: left;
+    width: 50%;
+    height: 100%;
+    white-space: nowrap;
+    padding: 0;
+}.search{
+    width: 100%;    text-align: right;
+ background-color: grey;}
+.search img{    width: 20px;
+    height: 20px;}
+.search input[type=text]{    display: inline;
+    width: 50%; margin-bottom: 4px;
+}
+.side-content .img{    
+    display: inline-block;
+    width: 50%;
+    background-size: cover;
+    min-height: 100%;
+    white-space: wrap;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Koala_climbing_tree.jpg/275px-Koala_climbing_tree.jpg");
+} 
+.side-content{ float: left;
+ width: 50%; height: 100%;
+ white-space: nowrap; padding: 0;
+} .side-content p{
+    vertical-align: top;    display: inline-block;
+    width: 49%;    white-space: wrap;
+}
+.container{    
+    margin-top: 10px;
+    display: block;
+    width: 100%;    height: 100%;
+    overflow: hidden;}
+.container-main{    width: 49%;
+    height: 100%;    float: right;
+}.main-content-item{
+ height: 30%; }
+.main-content-item img{ vertical-align: middle;
+ height: 60%;}
+.bear{ width: 100%;
+    height: 50%;}
+.wolf{
+ width: 100%;    height: 50%;
+}.donkey{
+ width: 100%;    height: 50%;
+}.bear div{
+ float: right;    height: 100%;
+    width: 50%;    text-align: center;
+    line-height: 3.8em;}
+.wolf div{ float: right;
+    height: 100%;    width: 50%;
+    text-align: center;    line-height: 3.8em;
+}
+.wolf .img{
+    float: left;    width: 50%;
+    height: 100%;    background-size: cover;
+    white-space: wrap;    background-image: url("https://redbookrf.ru/wp-content/webp-express/webp-images/uploads/2015/02/obl-7.jpg.webp");
+}
+.donkey div{
+ float: right;    height: 100%;
+    width: 50%;    text-align: center;
+    line-height: 3.8em;
+}
+.donkey .img{
+    float: left;    width: 50%;
+    height: 100%;    background-size: cover;
+    white-space: wrap;    background-image: url("https://avatars.dzeninfra.ru/get-zen_doc/5231507/pub_6324fa04e39edd5b7fc2b3b0_6324fae437a0922e08fe85ef/scale_2400");
+}
+
+.bear .img{
+ float: left;    width: 50%;
+    height: 100%;    background-size: cover;
+    white-space: wrap;    background-image: url("https://minio.nplus1.ru/app-images/655415/63035e784c683_img_desktop.png");
+}
